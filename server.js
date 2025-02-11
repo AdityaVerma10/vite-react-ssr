@@ -4,8 +4,7 @@ import express from 'express'
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 5174
-const base = 'http://localhost/'
-console.log(base)
+
 // Cached production assets
 const templateHtml = isProduction
   ? await fs.readFile('./dist/client/index.html', 'utf-8')
@@ -56,7 +55,7 @@ app.use('*all', async (req, res) => {
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '')
-    console.log(html)
+    // console.log(html)
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
     vite?.ssrFixStacktrace(e)
