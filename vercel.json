@@ -9,6 +9,10 @@
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": { "distDir": "dist/client" }
+      },
+      {
+        "src":"server.js",
+        "use":"@vercel/node"
       }
     ],
     "routes": [
