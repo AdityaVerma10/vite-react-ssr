@@ -32,6 +32,7 @@ if (!isProduction) {
   app.use(compression())
   app.use(base, sirv('./dist/client', { extensions: [] }))
 }
+console.log('inside ssr server....')
 
 // Serve HTML
 app.use('*all', async (req, res) => {
@@ -70,5 +71,3 @@ app.use('*all', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server started at http://localhost:${port}`)
 })
-
-export default app

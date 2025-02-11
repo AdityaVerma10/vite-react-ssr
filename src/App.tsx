@@ -10,7 +10,7 @@ function App() {
       <div className="min-h-screen flex flex-col">
         
         <Header />
-        <main className="flex-grow">hello 3.0 this is ssr rendering</main>
+        <main className="flex-grow">hello 4.0 this is ssr rendering</main>
         <Footer />
       </div>
     </div>
