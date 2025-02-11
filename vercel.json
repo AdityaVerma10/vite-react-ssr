@@ -4,12 +4,32 @@
       {
         "src": "server.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "dist/client" }
       }
     ],
     "routes": [
       {
+        "src": "/(.+\\.(xml|txt|json|webmanifest|svg|png|ico))",
+        "dest": "/$1"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "/server/index.js"
+      },
+      {
+        "src": "/assets/(.*)",
+        "dest": "/assets/$1"
+      },
+      {
         "src": "/(.*)",
-        "dest": "server.js"
+        "dest": "/index.html",
+        "headers": {
+          "Cache-Control": "public, max-age=0, must-revalidate"
+        }
       }
     ]
   }

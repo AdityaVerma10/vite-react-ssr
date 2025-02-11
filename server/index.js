@@ -7,7 +7,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 
-app.use('/test', (req, res) => {
+app.get('/test', (req, res) => {
     res.json({ message: 'Hello from the server!' });
 })
 
