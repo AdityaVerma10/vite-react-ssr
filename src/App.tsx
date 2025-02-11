@@ -8,8 +8,9 @@ function App() {
   return (
     <div>
       <div className="min-h-screen flex flex-col">
+        
         <Header />
-        <main className="flex-grow">hello this is ssr rendering</main>
+        <main className="flex-grow">hello 1.0 this is ssr rendering</main>
         <Footer />
       </div>
     </div>
