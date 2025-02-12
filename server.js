@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import express from 'express'
 
 // Constants
-const isProduction = false && process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 5174
 const base = process.env.BASE || ''
 
@@ -27,6 +27,7 @@ if (!isProduction) {
   })
   app.use(vite.middlewares)
 } else {
+  console.log('inside production server')
   const compression = (await import('compression')).default
   const sirv = (await import('sirv')).default
   app.use(compression())
@@ -49,6 +50,8 @@ app.use('*all', async (req, res) => {
       template = await vite.transformIndexHtml(url, template)
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render
     } else {
+  console.log('inside production server')
+
       template = templateHtml
       render = (await import('./dist/server/entry-server.js')).render
     }
